@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mh</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multiplication Helper</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+    <%= render "shared/header" %>
+  </div>
+
+  <!-- main body given by any view -->
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+  <div class="container">
+    <%= render "shared/footer" %>
+  </div>
 
 </body>
 </html>
