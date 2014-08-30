@@ -1,16 +1,10 @@
 class MhController < ApplicationController
 
-  def index
-    @item = Item.all.sample
+  def index #this is the root, supposed to be for the user to log in before sending the user to practice"
     
-    current_user = User.first
+    current_user = User.first #user "tester"
     
-    Event.new(user: current_user, item_id: @item.id, event_type: "show item").save
-    
-    @event = Event.new(user: current_user, item_id: @item.id, event_type: "submit")
-    @event.save
-    
-    
+    redirect_to :practice
   end
 
 end

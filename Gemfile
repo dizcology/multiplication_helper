@@ -45,7 +45,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bootstrap-sass'
 
 group :development do
-  gem 'better_errors'
+  #gem 'better_errors'  #yh: this requires ruby 2.0.0 but at the moment i am still using 1.9.3 :(
   gem 'binding_of_caller'
   gem 'annotate' 
 end
