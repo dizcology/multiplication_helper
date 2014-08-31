@@ -12,6 +12,8 @@ class EventsController < ApplicationController
     rec = Record.new(user_id: @event.user_id, item_id:@event.item_id, event_id: @event.id, result: res, duration: dur)
     rec.save
     
-    redirect_to(controller: "practice", record: rec.id.to_param)
+    flash[:record] = rec.id
+    
+    redirect_to(controller: "practice") 
   end
 end

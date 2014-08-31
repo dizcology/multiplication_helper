@@ -8,14 +8,17 @@ class PracticeController < ApplicationController
     #this does very little except for recording the show item time stamp, which is already in the submit event
     #Event.new(user: current_user, item_id: @item.id, event_type: "show item").save
     
-    if params[:record]
-      @record = Record.find_by(id: params[:record])
+    if flash[:record]
+      @record = Record.find_by(id: flash[:record]) if flash[:record]
       @item = Item.find_by(id: @record.item_id)
+      @event = Event.new(user: current_user, item_id: @item.id, event_type: "feedback")
+      @event.save
       
     else
       @item = Item.all.sample
       @event = Event.new(user: current_user, item_id: @item.id, event_type: "submit")
       @event.save
+      
     end
     
   end
