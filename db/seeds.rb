@@ -9,6 +9,9 @@
 ### Add some users.  I'm using an array of hashes that contain the user info
 
 [
+  { 
+    name: "tester"
+  },
   {
     name: "Matthew"
   },
@@ -24,6 +27,13 @@ end
 
 ### Add some items, same structure as before.  
 
+(1..12).each do |i|
+  (1..12).each do |j|
+    Item.find_or_create_by(name:"#{i}times#{j}", content: "#{i} \\times #{j}", answer: "#{i*j}")
+  end
+end
+
+=begin
 [
   {
     name: "Multiply",
@@ -36,5 +46,5 @@ end
 ].each do |item|
   Item.find_or_create_by(name: item[:name], content: item[:content])
 end
-
+=end
 ### You could do Item.find_or_create_by(name: "Multiply", content: "What is 5x3?"), Item.find_or_create_by(name...), and have one line for each thing, rather than pulling them from an array of hashes, but this feals more programattically correct to me.

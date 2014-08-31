@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   
   resources :events
-
   root 'mh#index'
+  get 'practice' => 'practice#index', as: 'practice'
+  
   patch 'events/:id' => 'events#update'
+  
+  
   
   #resources :users  #resources :items
 

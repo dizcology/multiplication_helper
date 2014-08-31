@@ -1,0 +1,6 @@
+<p> 
+  <%= parse(@item.content) %> = ? <%= form_for @event do |f| %>
+    <%= f.text_field :response%>
+    <%= f.submit "Submit" %>
+  <% end %>  
+</p>
