@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'mh#index'
   get 'practice' => 'practice#index', as: 'practice'
   
-  patch 'events/:id' => 'events#update'
+  patch 'events/:id/submit' => 'events#submit'
   
   
   

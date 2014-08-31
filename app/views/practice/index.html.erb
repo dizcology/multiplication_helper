@@ -1,6 +1,17 @@
 <p> 
-  <%= parse(@item.content) %> = ? <%= form_for @event do |f| %>
-    <%= f.text_field :response%>
-    <%= f.submit "Submit" %>
+  <%= parse(@item.content) %> = ? 
+  <% if @record %>
+    <p>Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.</p>
+    
+    <%= button_to "Okay! show me another problem.", :practice, method: "get"%>
+     #TODO: add buttons to show solution(s)
+     
+  <% else %>
+    <%= form_for @event, url: event_url(@event)+"/submit" do |f| %>
+      
+      <%= f.text_field :response%>
+      <%= f.submit "Submit" %>
+    <% end %>
   <% end %>  
+  
 </p>
