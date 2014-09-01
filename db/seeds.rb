@@ -23,14 +23,20 @@
   }
 ].each do |user|
   User.find_or_create_by(name: user[:name])
+  Trait.find_or_create_by(user_id: User.find_by(name: user[:name]).id)
 end
 
 ### Add some items, same structure as before.  
 
 (1..12).each do |i|
   (1..12).each do |j|
-    Item.find_or_create_by(name:"#{i}times#{j}", content: "#{i} \\times #{j}", answer: "#{i*j}")
+    itemname="#{i}times#{j}"
+    Item.find_or_create_by(name:itemname, content: "#{i} \\times #{j}", answer: "#{i*j}", tag: itemname)
+    
+    ActiveRecord::Migration.add_column :traits, itemname.to_sym, :float, :default=>0.0
   end
+  
+  
 end
 
 =begin

@@ -9,7 +9,7 @@
     <% #TODO: add buttons to show solution(s)%>
   
   <% else %>
-    <%= form_for @event, url: event_url(@event)+"/submit" do |f| %>
+    <%= form_for @event, url: event_url(@event) do |f| %>
       
       <%= f.text_field :response%>
       <%= f.submit "Submit" %>

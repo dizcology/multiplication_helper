@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  def submit  #right now this is only for updating submit events, not sure how to have a generic event updater that controls all the event updates.
+  def update  
     
     @event = Event.find_by(id: params[:id])
     
