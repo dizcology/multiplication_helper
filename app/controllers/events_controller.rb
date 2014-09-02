@@ -20,12 +20,23 @@ class EventsController < ApplicationController
     rec.save
     
     #update trait:
-    #the model should be refined to take into account of learning, for example we should at least weight the more recent records higher; perhaps try the reverse exponential decay model (with an arbitrary base).
     
     s = 0.1 #slip... to be moved to model profile model
     g = 0.01  #guess... to be moved to model profile model 
+    f = 2.0 #forget... to be moved to model profile model
     
     tr = Trait.find_by(user_id: user.id)
+    
+    last_rec = Record.where(user: user.id, item: item.id).last
+    
+    if last_rec
+      y_since_last = rec.created_at.year - last_rec.created_at.year
+      d_since_last = rec.created_at.day - last_rec.created_at.day
+      
+      gap = (365*y_since_last+d_since_last).to_f  #maybe there is a better way to get the number of days between two dates
+      tr[(item.name).to_sym] /= f**(gap)
+      
+    end
     
     if res
       tr[(item.name).to_sym] += Math.log((1-s)/g)
