@@ -1,5 +1,5 @@
 <p> 
-  <%= parse(@item.content) %> = ? 
+  <%= parse(@item.content) %>
     
   <% if flash[:record] %>
     <p>Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.</p>
