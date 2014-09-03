@@ -10,12 +10,12 @@ class PracticeController < ApplicationController
     
     if flash[:record]
       @record = Record.find_by(id: flash[:record]) if flash[:record]
-      @item = Item.find_by(id: @record.item_id)
+      @item = Item.find_by(id: @record.event.item_id)
       @event = Event.new(user: current_user, item_id: @item.id, event_type: "feedback")
       @event.save
       
     else
-      @item = Item.all.sample
+      @item = Item.all.sample #need an algorithm to select items based on user trait values and encounter history
       @event = Event.new(user: current_user, item_id: @item.id, event_type: "submit")
       @event.save
       

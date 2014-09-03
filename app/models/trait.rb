@@ -1,3 +1,5 @@
 class Trait < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_traits
+  has_many :events
+  has_many :records
 end

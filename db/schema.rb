@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901044148) do
+ActiveRecord::Schema.define(version: 20140903023533) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id",    null: false
@@ -36,16 +36,25 @@ ActiveRecord::Schema.define(version: 20140901044148) do
 
   create_table "records", force: true do |t|
     t.integer  "user_id",    null: false
-    t.integer  "item_id",    null: false
     t.boolean  "result",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "duration"
     t.integer  "event_id"
+    t.integer  "trait_id"
   end
 
   create_table "traits", force: true do |t|
-    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_traits", force: true do |t|
+    t.integer  "user_id",                  null: false
+    t.integer  "trait_id",                 null: false
+    t.integer  "n",          default: 0
+    t.float    "value",      default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

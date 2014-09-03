@@ -3,20 +3,24 @@
     
   <% if flash[:record] %>
     <p>Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.</p>
-    
-    <%= button_to "Okay! show me another problem.", :practice, method: "get"%>
+    <% if !@record.result %>
+      <p>The correct answer is <%= @item.answer %>.  </p>
+    <% end %>
+    <%= button_to "Okay! show me another problem.", :practice, method: "get", id: "another"%>
     <% flash[:record] = nil %>
     <% #TODO: add buttons to show solution(s)%>
   
   <% else %>
     <%= form_for @event, url: event_url(@event) do |f| %>
       
-      <%= f.text_field :response%>
+      <%= f.text_field :response, id: "response"%>
       <%= f.submit "Submit" %>
     <% end %>
   <% end %>
-  
 
- 
-  
 </p>
+
+<script>
+  $("#response").focus()
+  $("#another").focus()
+</script>
