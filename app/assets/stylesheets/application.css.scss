@@ -16,3 +16,52 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$primary-color: lightblue;
+$main-text-color: darken(red, 30%);
+$well-text-color: darken($primary-color, 60%);
+
+body {
+  background: lighten($primary-color, 10%);
+  color: $main-text-color;
+  
+  margin-top: 30px;
+  
+  h1, h2 {
+    font-size: 48px;
+  }
+  
+  h3 {
+    font-size: 36px;
+  }
+}
+
+.mult-well {
+  margin-top: 30px;
+  
+  background: darken($primary-color, 20%);
+  color: $well-text-color;
+  
+  border-radius: 15px;
+  padding: 30px 50px;
+  
+  h1, h2 {
+    font-size: 48px;
+    margin: 12px 0px;
+  }
+
+  .user-input {
+    padding: 1.2em 0.6em;    
+    border-radius: 10px;
+    margin: 24px 0px;
+    font-size: 36px;
+    font-style: italic;
+  }
+  
+  .btn {
+    font-size: 36px;
+    margin: 12px 0px;
+    border: 1px $primary-color;
+    background: darken($primary-color, 40%);
+  }
+}

@@ -1,24 +1,42 @@
-<p> 
-  <%= parse(@item.content) %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">    
+    <div class="well mult-well">
+      <% if flash[:record] %>
+        <h2>
+          <%= parse(@item.content) %>
+        </h2>
+        <h2>
+          Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.
+        </h2>
     
-  <% if flash[:record] %>
-    <p>Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.</p>
-    <% if !@record.result %>
-      <p>The correct answer is <%= @item.answer %>.  </p>
-    <% end %>
-    <%= button_to "Okay! show me another problem.", :practice, method: "get", id: "another"%>
-    <% flash[:record] = nil %>
-    <% #TODO: add buttons to show solution(s)%>
+        <% if !@record.result %>
+          <h2>
+            The correct answer is <%= @item.answer %>.  
+          </h2>
+        <% end %>
+    
+        <%= button_to "Okay! show me another problem.", :practice, method: "get", id: "another", class: "btn btn-primary btn-lg" %>
+    
+        <% flash[:record] = nil %>
+    
+        <% #TODO: add buttons to show solution(s)%>
+      <% else %>
   
-  <% else %>
-    <%= form_for @event, url: event_url(@event) do |f| %>
+        <%= form_for @event, url: event_url(@event), html: { role: "form", autocomplete: "off" } do |f| %>
+          <div class="form-group">
+            <h2>
+              <%= parse(@item.content) %>
+            </h2>
+          
+            <%= f.text_field :response, id: "response", class: "form-control user-input" %>
+          </div>
       
-      <%= f.text_field :response, id: "response"%>
-      <%= f.submit "Submit" %>
-    <% end %>
-  <% end %>
-
-</p>
+          <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <script>
   $("#response").focus()

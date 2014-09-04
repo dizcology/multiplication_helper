@@ -11,17 +11,19 @@
 </head>
 <body>
 
-  <div class="container">
-    <%= render "shared/header" %>
-  </div>
+  <div class="all-content">
+    <div class="container">
+      <%= render "shared/header" %>
+    </div>
 
-  <!-- main body given by any view -->
-  <div class="container">
-    <%= yield %>
-  </div>
+    <!-- main body given by any view -->
+    <div class="container">
+      <%= yield %>
+    </div>
   
-  <div class="container">
-    <%= render "shared/footer" %>
+    <div class="container">
+      <%= render "shared/footer" %>
+    </div>
   </div>
 
 </body>
