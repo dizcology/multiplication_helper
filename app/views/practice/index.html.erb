@@ -1,5 +1,14 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">    
+  <div class="col-md-3">
+    <div class="well stat-well">
+      <h4>Total Completed <small class="pull-right"><%= Record.count %></small></h4>
+
+      <h4>Total Correct <small class="pull-right"><%= Record.all.where(result: true).count %></small></h4>
+
+      <h4>Current Average <small class="pull-right"><%= (Record.all.where(result: true).count.to_f / Record.count * 100).round %> %</small></h4>
+    </div>
+  </div>
+  <div class="col-md-6">    
     <div class="well mult-well">
       <% if flash[:record] %>
         <h2>
@@ -36,9 +45,16 @@
       <% end %>
     </div>
   </div>
+  <div class="col-md-3">
+    <div class="well stat-well" style="display: none;">
+    </div>
+  </div>
 </div>
 
 <script>
-  $("#response").focus()
-  $("#another").focus()
+  if($("#response").length > 0) {
+    $("#response").focus();
+  } else {
+    $("#another").focus();
+  };  
 </script>
