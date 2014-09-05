@@ -36,7 +36,7 @@ class EventsController < ApplicationController
       
       gap = (365*y_since_last+d_since_last).to_f  #maybe there is a better way to get the number of days between two dates
       
-      user_trait.value /= f**(gap)
+      user_trait.value /= f**(gap) if user_trait.value>0  #model forgetting for positive trait values
       
     end
     
