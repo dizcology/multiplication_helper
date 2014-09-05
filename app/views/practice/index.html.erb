@@ -5,7 +5,7 @@
 
       <h4>Total Correct <small class="pull-right"><%= Record.all.where(result: true).count %></small></h4>
 
-      <h4>Current Average <small class="pull-right"><%= (Record.all.where(result: true).count.to_f / Record.count * 100).round %> %</small></h4>
+      <h4>Current Average <small class="pull-right"><%= (Record.count!=0)? (Record.all.where(result: true).count.to_f / Record.count * 100).round : 0%> %</small></h4>
     </div>
   </div>
   <div class="col-md-9">    
