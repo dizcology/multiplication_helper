@@ -7,4 +7,6 @@ class Trait < ActiveRecord::Base
     nm = self.name
     Item.where("tag = \"#{nm}\" OR tag LIKE \"%#{nm}|%\" OR tag LIKE \"%|#{nm}%\"")
   end
+  
+
 end

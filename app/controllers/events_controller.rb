@@ -46,6 +46,8 @@ class EventsController < ApplicationController
       user_trait.value += Math.log(s/(1-g))
     end
     
+    user_trait.n += 1
+    
     user_trait.save
     
     #pass flash message for feedback

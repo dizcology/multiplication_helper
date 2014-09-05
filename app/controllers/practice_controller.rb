@@ -15,12 +15,35 @@ class PracticeController < ApplicationController
       @event.save
       
     else
-      @item = Item.all.sample #need an algorithm to select items based on user trait values and encounter history
+      @item = getItem(current_user) #need an algorithm to select items based on user trait values and encounter history
       @event = Event.new(user: current_user, item_id: @item.id, event_type: "submit")
       @event.save
       
     end
     
   end
+  
+  def getItem user
+    
+    return Item.all.sample if Record.where(user: user).size == 0
+    
+    user_traits = UserTrait.where(user: user)
+    wts = user_traits.map(&:weight).accumulate
+    
+    nPool = 5 #pool of traits to sample from... move to model profile model
+    
+    item_pool = []
+    nPool.times.each do
+      item_pool += user_traits[wts.getPosition(rand)].trait.items
+    end
+    
+    return item_pool.sample
+  end
 
 end
+
+
+
+
+
+

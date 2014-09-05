@@ -27,6 +27,8 @@ end
 
 ### Add some items, same structure as before.  
 
+### other items to eventually add: 3 x ? = 6, ? x 5 = 15, 1+2=? etc., 4-2 = ? etc., 1, 3, 5, 7, ?, 11.  word problems.
+
 (1..12).each do |i|
   (1..12).each do |j|
     itemname="#{i}times#{j}"
