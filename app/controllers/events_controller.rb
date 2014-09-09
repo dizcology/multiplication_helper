@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     
     # update record:
     
-    res = (@event.response.strip == item.answer)
+    res = (@event.response.strip == item.answer)  #check answer
     dur = @event.updated_at - @event.created_at
     
     rec = Record.new(user: user, trait: trait, event: @event, result: res, duration: dur)

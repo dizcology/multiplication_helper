@@ -12,17 +12,21 @@
     <div class="well mult-well">
       <% if flash[:record] %>
         <h2>
-          <%= parse(@item.content) %>
+          <%= parse(@item, answer = true) %>
         </h2>
         <h2>
           Your answer <%= @record.event.response %> was <%= (@record.result)? "correct" : "incorrect" %>.
         </h2>
     
+        <!--
         <% if !@record.result %>
           <h2>
             The correct answer is <%= @item.answer %>.  
           </h2>
         <% end %>
+        //-->
+        
+        <%= button_to "Show me how to solve this!", :practice, method: "get", id: "solve", class: "btn btn-primary btn-lg" %>
     
         <%= button_to "Okay! show me another problem.", :practice, method: "get", id: "another", class: "btn btn-primary btn-lg" %>
     
@@ -34,7 +38,7 @@
         <%= form_for @event, url: event_url(@event), html: { role: "form", autocomplete: "off" } do |f| %>
           <div class="form-group">
             <h2>
-              <%= parse(@item.content) %>
+              <%= parse(@item) %>
             </h2>
           
             <%= f.text_field :response, id: "response", class: "form-control user-input" %>
@@ -55,6 +59,6 @@
   if($("#response").length > 0) {
     $("#response").focus();
   } else {
-    $("#another").focus();
+    $("#solve").focus();
   };  
 </script>

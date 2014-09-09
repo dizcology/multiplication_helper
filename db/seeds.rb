@@ -32,7 +32,7 @@ end
 (1..12).each do |i|
   (1..12).each do |j|
     itemname="#{i}times#{j}"
-    Item.find_or_create_by(name:itemname, content: "#{i} \\times #{j} = ?", answer: "#{i*j}", tag: itemname)
+    Item.find_or_create_by(name:itemname, content: "#{i} \\times #{j} = \\?", answer: "#{i*j}", tag: itemname)
     
     Trait.find_or_create_by(name:itemname)
   end
