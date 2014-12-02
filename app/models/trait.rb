@@ -1,6 +1,6 @@
 class Trait < ActiveRecord::Base
   has_many :user_traits
-  has_many :events
+  #has_many :events
   has_many :records
   
   def items
@@ -8,5 +8,4 @@ class Trait < ActiveRecord::Base
     Item.where("tag = ?", nm)
   end
   
-
 end
