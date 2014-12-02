@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20140903023533) do
   create_table "items", force: true do |t|
     t.string   "name"
     t.string   "content"
+    t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "answer"
     t.string   "tag"
   end
 

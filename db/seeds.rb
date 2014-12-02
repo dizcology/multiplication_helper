@@ -29,6 +29,24 @@ end
 
 ### other items to eventually add: 3 x ? = 6, ? x 5 = 15, 1+2=? etc., 4-2 = ? etc., 1, 3, 5, 7, ?, 11.  word problems.
 
+(0..20).each do |i|
+  (0..20).each do |j|
+    itemname = "#{i}plus#{j}"
+    Item.find_or_create_by(name:itemname, content: "#{i} \\plus #{j} = \\?", answer: "#{i+j}", tag: itemname)
+    
+    Trait.find_or_create_by(name:itemname)
+  end
+end
+
+(0..20).each do |i|
+  (0..i).each do |j|
+    itemname = "#{i}minus#{j}"
+    Item.find_or_create_by(name:itemname, content: "#{i} \\minus #{j} = \\?", answer: "#{i-j}", tag: itemname)
+    
+    Trait.find_or_create_by(name:itemname)
+  end
+end
+
 (1..12).each do |i|
   (1..12).each do |j|
     itemname="#{i}times#{j}"

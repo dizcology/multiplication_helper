@@ -2,7 +2,9 @@ module PracticeHelper
 
   @@replace={
     "\\times" => "&times;",
-    "\\?" => "?"
+    "\\plus" => "&#43;",
+    "\\minus" => "&#45;",
+    "\\?" => "&#63;"
     }
 
   def parse(item, answer = false)

@@ -26,9 +26,11 @@
         <% end %>
         //-->
         
+        <!--
         <%= button_to "Show me how to solve this!", :practice, method: "get", id: "solve", class: "btn btn-primary btn-lg" %>
-    
-        <%= button_to "Okay! show me another problem.", :practice, method: "get", id: "another", class: "btn btn-primary btn-lg" %>
+        -->
+        
+        <%= button_to "Try another problem.", :practice, method: "get", id: "another", class: "btn btn-primary btn-lg" %>
     
         <% flash[:record] = nil %>
     
@@ -59,6 +61,6 @@
   if($("#response").length > 0) {
     $("#response").focus();
   } else {
-    $("#solve").focus();
+    $("#another").focus();
   };  
 </script>
